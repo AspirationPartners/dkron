@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: asppbrown/circle-build-base:0.9.52-minimal
+    working_directory: /build
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - checkout
+      - run:
+          name: Build Image
+          command: |
+            docker build --rm=false -t aspiration/dkron -f Dockerfile .
+      - run:
+          name: Tag & Push Image
+          command: push_tags aspiration/dkron aspiration/dkron
