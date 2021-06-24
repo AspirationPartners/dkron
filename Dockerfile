@@ -1,4 +1,4 @@
-FROM golang:1.9
+FROM golang:1.15.13
 MAINTAINER Victor Castell <victor@victorcastell.com>
 
 EXPOSE 8080 8946
